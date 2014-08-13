@@ -4,19 +4,17 @@
     <title>Step 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified JavaScript -->
-    <script src="js/jquery-1.11.1.js"></script>
-
+    <script src="js/knockout-3.1.0.js"></script>
 </head>
 <body>
-<h1>Hello <span class="hello">World</span>!</h1>
-<input type="text" id="name" class="name"/>
-<script type="text/javascript">
-    (function ($) {
-        $('.name').keyup(function () {
-            $('.hello').text($(this).val());
-        });
-    })(jQuery);
+<h1>Hello <span class="hello" data-bind="text: name">World</span>!</h1>
+<input type="text" id="name" class="name" data-bind="value: name"/>
+<script>
+    var ViewModel = {
+        name: ko.observable('')
+    };
 
+    ko.applyBindings(ViewModel);
 </script>
 </body>
 </html>
